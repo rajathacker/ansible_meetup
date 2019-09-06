@@ -1,0 +1,21 @@
+---
+# tasks file for roles/httpd
+- name: Installing HTTPD
+  yum:
+    name: httpd
+    state: latest
+- name: Copying index.html
+  copy:
+    src: index.html
+    dest: /var/www/html/
+- name: Starting and Enabling HTTPD
+  service:
+    name: httpd
+    state: started
+    enabled: true
+- name: Adding http service in Firewalld
+  firewalld:
+    service: http
+    permanent: true
+    immediate: true
+    state: enabled

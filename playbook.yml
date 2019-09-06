@@ -1,0 +1,7 @@
+---
+- name: Testing HTTPD Workflow
+  hosts: all
+  become: true
+  roles:
+  - httpd
+...
